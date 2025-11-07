@@ -46,5 +46,5 @@ Koas merupakan tahap pendidikan klinik dimana mahasiswa kedokteran menjalani pra
 ### Server
 - **Apache** - Web server
 
-### Hasil Websitenya
+## Hasil Websitenya
 <img width="960" height="540" alt="Cuplikan layar 2025-11-07 202440" src="https://github.com/user-attachments/assets/593fa51b-07c2-49d6-b487-4b41a4153031" />
