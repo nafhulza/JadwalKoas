@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KoasMed - Sistem Manajemen Jadwal Koas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-stethoscope"></i>
+                    <div class="logo-text">
+                        <h1>KoasMed<span>UGM</span></h1>
+                        <p>Fakultas Kedokteran - Sistem Manajemen Jadwal Koas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <span class="theme-text">Mode Gelap</span>
+                </button>
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="welcome">Selamat datang,</span>
+                        <span class="username">Admin Koas</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Stats -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Dashboard Overview</h2>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-main">
+                            <span class="stat-number" id="totalMahasiswa">5</span>
+                            <h3 class="stat-title">Total Mahasiswa Koas</h3>
+                        </div>
+                        <p class="stat-desc">Semua program studi</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-main">
+                            <span class="stat-number" id="totalRumahSakit">3</span>
+                            <h3 class="stat-title">Rumah Sakit Mitra</h3>
+                        </div>
+                        <p class="stat-desc">Tempat koas aktif</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-main">
+                            <span class="stat-number" id="sedangKoas">4</span>
+                            <h3 class="stat-title">Sedang Koas</h3>
+                        </div>
+                        <p class="stat-desc">Mahasiswa aktif koas</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-main">
+                            <span class="stat-number">6</span>
+                            <h3 class="stat-title">Stase Tersedia</h3>
+                        </div>
+                        <p class="stat-desc">Jenis stase koas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="main-content">
+            <div class="content-grid">
+                <!-- Form Input -->
+                <div class="form-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-plus-circle"></i> Input Jadwal Koas</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="jadwalForm">
+                                <input type="hidden" id="jadwalId">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="nama"><i class="fas fa-user"></i> Nama Mahasiswa</label>
+                                        <input type="text" id="nama" placeholder="Masukkan nama mahasiswa" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nim"><i class="fas fa-id-card"></i> NIM</label>
+                                        <input type="text" id="nim" placeholder="Masukkan NIM" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="stase"><i class="fas fa-book-medical"></i> Stase</label>
+                                        <select id="stase" required>
+                                            <option value="">Pilih Stase</option>
+                                            <option value="Penyakit Dalam">Penyakit Dalam</option>
+                                            <option value="Ilmu Bedah">Ilmu Bedah</option>
+                                            <option value="Obstetri dan Ginekologi">Obstetri dan Ginekologi</option>
+                                            <option value="Pediatri">Pediatri</option>
+                                            <option value="Neurologi">Neurologi</option>
+                                            <option value="Kardiologi">Kardiologi</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rumahSakit"><i class="fas fa-hospital-alt"></i> Rumah Sakit</label>
+                                        <select id="rumahSakit" required>
+                                            <option value="">Pilih Rumah Sakit</option>
+                                            <option value="RSUD Dr. Soetomo">RSUD Dr. Soetomo</option>
+                                            <option value="RSIA Kendangsari">RSIA Kendangsari</option>
+                                            <option value="RS Universitas Airlangga">RS Universitas Airlangga</option>
+                                            <option value="RSUD Dr. M. Djamil">RSUD Dr. M. Djamil</option>
+                                            <option value="RS Persahabatan">RS Persahabatan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tanggalMulai"><i class="fas fa-calendar-day"></i> Tanggal Mulai</label>
+                                        <input type="date" id="tanggalMulai" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tanggalSelesai"><i class="fas fa-calendar-check"></i> Tanggal Selesai</label>
+                                        <input type="date" id="tanggalSelesai" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="pembimbing"><i class="fas fa-chalkboard-teacher"></i> Dosen Pembimbing</label>
+                                    <input type="text" id="pembimbing" placeholder="Masukkan nama dosen pembimbing" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="status"><i class="fas fa-info-circle"></i> Status Koas</label>
+                                    <select id="status">
+                                        <option value="Aktif">Aktif</option>
+                                        <option value="Selesai">Selesai</option>
+                                        <option value="Ditunda">Ditunda</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="button-group">
+                                    <button type="submit" id="submitBtn" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Simpan Jadwal
+                                    </button>
+                                    <button type="button" id="cancelBtn" class="btn btn-secondary" style="display: none;">
+                                        <i class="fas fa-times"></i> Batal Edit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="table-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-list-alt"></i> Daftar Jadwal Koas</h2>
+                            <div class="filters">
+                                <div class="search-container">
+                                    <input type="text" id="searchInput" placeholder="Cari NIM / nama / stase...">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <select id="filterStase">
+                                    <option value="">Semua Stase</option>
+                                    <option value="Penyakit Dalam">Penyakit Dalam</option>
+                                    <option value="Ilmu Bedah">Ilmu Bedah</option>
+                                    <option value="Obstetri dan Ginekologi">Obstetri dan Ginekologi</option>
+                                    <option value="Pediatri">Pediatri</option>
+                                    <option value="Neurologi">Neurologi</option>
+                                    <option value="Kardiologi">Kardiologi</option>
+                                </select>
+                                <select id="filterStatus">
+                                    <option value="">Semua Status</option>
+                                    <option value="Aktif">Aktif</option>
+                                    <option value="Selesai">Selesai</option>
+                                    <option value="Ditunda">Ditunda</option>
+                                </select>
+                                <button id="resetFilter" class="btn btn-outline">
+                                    <i class="fas fa-refresh"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="jadwalTable">
+                                    <thead>
+                                        <tr>
+                                            <th>NIM</th>
+                                            <th>NAMA</th>
+                                            <th>STASE</th>
+                                            <th>RUMAH SAKIT</th>
+                                            <th>TGL MULAI</th>
+                                            <th>TGL SELESAI</th>
+                                            <th>STATUS</th>
+                                            <th>AKSI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="jadwalTableBody">
+                                        <!-- Data jadwal akan dimuat di sini -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="emptyState" class="empty-state">
+                                <i class="fas fa-calendar-times"></i>
+                                <h3>Belum ada jadwal koas</h3>
+                                <p>Tambahkan jadwal koas pertama Anda dengan mengisi form di samping</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> Konfirmasi Hapus</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus jadwal koas ini?</p>
+                <p class="delete-warning">Data yang dihapus tidak dapat dikembalikan!</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmDelete" class="btn btn-danger">
+                    <i class="fas fa-trash"></i> Hapus
+                </button>
+                <button id="cancelDelete" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
